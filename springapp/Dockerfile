@@ -9,11 +9,11 @@ RUN mvn dependency:go-offline -B
 # Copy source code
 COPY src ./src
 
-# Build application (skip tests if you want faster builds)
+# Build application (skip tests for faster builds)
 RUN mvn clean package -DskipTests
 
 # ---- Run Stage ----
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jdk-jammy
 WORKDIR /app
 
 # Copy the JAR from build stage
